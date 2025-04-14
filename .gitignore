@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+logs/
+*.log
+
+# Virtual environment
+venv/
+ENV/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Distribution files
+*.zip
+*.tar.gz
+*.tar.bz2
+
+# Debug files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Browser driver files
+geckodriver
+chromedriver
