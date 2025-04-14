@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Filler Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-form {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .hidden-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Auto-Filler Test Page</h1>
+    <p>This page contains various form elements to test the Python auto-filler script.</p>
+    <p><strong>Note:</strong> To use this page with the Python script, simply start the script and then open this HTML file in Chrome.</p>
+
+    <div class="test-form">
+        <h2>Basic Form</h2>
+        <form id="basicForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website" placeholder="Enter your website">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="test-form">
+        <h2>Advanced Form Elements</h2>
+        <form id="advancedForm">
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your message"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="">Select a country</option>
+                    <option value="us">United States</option>
+                    <option value="ca">Canada</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="au">Australia</option>
+                    <option value="jp">Japan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male" style="display: inline;">Male</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female" style="display: inline;">Female</label>
+                </div>
+                <div>
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other" style="display: inline;">Other</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interests:</label>
+                <div>
+                    <input type="checkbox" id="tech" name="interests" value="tech">
+                    <label for="tech" style="display: inline;">Technology</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="sports" name="interests" value="sports">
+                    <label for="sports" style="display: inline;">Sports</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="music" name="interests" value="music">
+                    <label for="music" style="display: inline;">Music</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="art" name="interests" value="art">
+                    <label for="art" style="display: inline;">Art</label>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="test-form">
+        <h2>Dynamic Form</h2>
+        <button id="addField">Add New Text Field</button>
+        <button id="addSelect">Add New Select Field</button>
+        <form id="dynamicForm">
+            <!-- Dynamic fields will be added here -->
+        </form>
+        <button type="submit" form="dynamicForm">Submit</button>
+    </div>
+
+    <div class="test-form hidden-form">
+        <h2>Hidden Form (Should Not Be Filled By Default)</h2>
+        <form id="hiddenForm">
+            <div class="form-group">
+                <label for="hiddenName">Name:</label>
+                <input type="text" id="hiddenName" name="hiddenName" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label for="hiddenEmail">Email:</label>
+                <input type="email" id="hiddenEmail" name="hiddenEmail" placeholder="Enter your email">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="controls">
+        <button id="toggleHiddenForm">Toggle Hidden Form</button>
+        <button id="clearAll">Clear All Fields</button>
+    </div>
+
+    <!-- Test page functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Prevent form submissions
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Form submitted:', new FormData(form));
+                    alert('Form would be submitted (prevented for testing)');
+                });
+            });
+
+            // Dynamic form fields
+            let fieldCounter = 1;
+            document.getElementById('addField').addEventListener('click', function() {
+                const fieldId = `dynamicField${fieldCounter}`;
+                const newField = document.createElement('div');
+                newField.className = 'form-group';
+                newField.innerHTML = `
+                    <label for="${fieldId}">Dynamic Field ${fieldCounter}:</label>
+                    <input type="text" id="${fieldId}" name="${fieldId}" placeholder="Enter value">
+                `;
+                document.getElementById('dynamicForm').appendChild(newField);
+                fieldCounter++;
+            });
+
+            document.getElementById('addSelect').addEventListener('click', function() {
+                const fieldId = `dynamicSelect${fieldCounter}`;
+                const newField = document.createElement('div');
+                newField.className = 'form-group';
+                newField.innerHTML = `
+                    <label for="${fieldId}">Dynamic Select ${fieldCounter}:</label>
+                    <select id="${fieldId}" name="${fieldId}">
+                        <option value="">Select an option</option>
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                    </select>
+                `;
+                document.getElementById('dynamicForm').appendChild(newField);
+                fieldCounter++;
+            });
+
+            // Control buttons
+            document.getElementById('clearAll').addEventListener('click', function() {
+                document.querySelectorAll('input, textarea, select').forEach(input => {
+                    if (input.type === 'checkbox' || input.type === 'radio') {
+                        input.checked = false;
+                    } else {
+                        input.value = '';
+                    }
+                });
+            });
+
+            document.getElementById('toggleHiddenForm').addEventListener('click', function() {
+                const hiddenForm = document.querySelector('.hidden-form');
+                hiddenForm.style.display = hiddenForm.style.display === 'none' || hiddenForm.style.display === '' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
