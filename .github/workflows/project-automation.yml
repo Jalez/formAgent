@@ -1,0 +1,29 @@
+name: Simple Project Automation
+
+on:
+  issues:
+    types: [labeled, unlabeled]
+
+jobs:
+  update_issue_status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine new status
+        id: determine_status
+        run: |
+          labels=$(jq -r '.issue.labels[].name' "$GITHUB_EVENT_PATH")
+          if echo "$labels" | grep -qi "in-progress"; then
+            echo "status=In Progress" >> $GITHUB_OUTPUT
+          elif echo "$labels" | grep -qi "done"; then
+            echo "status=Done" >> $GITHUB_OUTPUT
+          else
+            echo "status=Todo" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Update project status
+        uses: nipe0324/update-project-v2-item-field@v2.0.2
+        with:
+          project-url: https://github.com/users/jalez/projects/2
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          field-name: "Status"
+          field-value: ${{ steps.determine_status.outputs.status }}
