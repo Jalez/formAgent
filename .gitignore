@@ -20,6 +20,8 @@ var/
 .installed.cfg
 *.egg
 
+.wiki
+formAgent.wiki/
 # Logs
 logs/
 *.log
