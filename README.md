@@ -81,10 +81,7 @@ python src/browsers/safari_auto_filler.py --attach
 
 - `formagent.py` - Main entry point
 - `src/` - Source code
-  - `core/` - Core functionality
-    - `auto-filler.js` - Main JavaScript form filling logic
-  - `browsers/` - Browser-specific implementations
-- `docs/` - Documentation
+  - `browsers/` - Browser-specific implementations for Chrome, Firefox, and Safari
 - `test/` - Test files and forms
 - `test-form.html` - Sample form for testing
 
