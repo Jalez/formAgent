@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "FormAgent",
+  "version": "1.0",
+  "description": "Auto-fill forms with your locally stored data",
+  "icons": {
+    "48": "icons/formAgent-48.svg",
+    "96": "icons/formAgent-96.svg"
+  },
+  "action": {
+    "default_icon": {
+      "48": "icons/formAgent-48.svg",
+      "96": "icons/formAgent-96.svg"
+    },
+    "default_title": "FormAgent",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content/formfiller.js"],
+      "run_at": "document_idle",
+      "type": "module"
+    }
+  ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "formAgent@example.com"
+    }
+  }
+}
