@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormAgent Settings</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    
+    .form-section {
+      margin-bottom: 30px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+    }
+    
+    .form-section h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    
+    .buttons {
+      margin-top: 20px;
+      text-align: right;
+    }
+    
+    button {
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.2s;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>FormAgent Settings</h1>
+  
+  <p>Customize the information used to automatically fill forms on websites. This data is stored locally on your computer.</p>
+  
+  <form id="userData">
+    <div class="form-section">
+      <h2>Personal Information</h2>
+      
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name">
+      </div>
+      
+      <div class="form-group">
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name">
+      </div>
+      
+      <div class="form-group">
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name">
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h2>Contact Information</h2>
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email">
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+    </div>
+    
+    <div class="form-section">
+      <h2>Address</h2>
+      
+      <div class="form-group">
+        <label for="address_street">Street Address</label>
+        <input type="text" id="address_street" name="address_street">
+      </div>
+      
+      <div class="form-group">
+        <label for="address_city">City</label>
+        <input type="text" id="address_city" name="address_city">
+      </div>
+      
+      <div class="form-group">
+        <label for="address_state">State/Province</label>
+        <input type="text" id="address_state" name="address_state">
+      </div>
+      
+      <div class="form-group">
+        <label for="address_zip">ZIP/Postal Code</label>
+        <input type="text" id="address_zip" name="address_zip">
+      </div>
+      
+      <div class="form-group">
+        <label for="address_country">Country</label>
+        <input type="text" id="address_country" name="address_country">
+      </div>
+    </div>
+    
+    <div class="buttons">
+      <button type="submit" id="saveButton">Save Settings</button>
+    </div>
+  </form>
+  
+  <div id="statusMessage" class="status hidden"></div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

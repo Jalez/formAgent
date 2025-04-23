@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormAgent</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      width: 300px;
+      padding: 15px;
+      margin: 0;
+    }
+    
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 10px;
+    }
+    
+    header img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #2c3e50;
+    }
+    
+    .status-container {
+      margin-bottom: 15px;
+    }
+    
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    
+    .active {
+      background-color: #2ecc71;
+    }
+    
+    .inactive {
+      background-color: #e74c3c;
+    }
+    
+    .status-text {
+      font-size: 14px;
+    }
+    
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: left;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    button.secondary {
+      background-color: #f8f9fa;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+    
+    button.secondary:hover {
+      background-color: #e9ecef;
+    }
+    
+    .info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 15px;
+      border-top: 1px solid #e0e0e0;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../icons/formAgent-48.svg" alt="FormAgent Logo">
+    <h1>FormAgent</h1>
+  </header>
+  
+  <div class="status-container">
+    <div class="status-indicator">
+      <div class="status-dot" id="serverStatus"></div>
+      <span class="status-text" id="serverStatusText">Checking server status...</span>
+    </div>
+  </div>
+  
+  <button id="optionsButton">Edit Your Form Data</button>
+  <button id="fillFormsButton">Fill Forms on This Page</button>
+  <button id="disableButton" class="secondary">Disable for This Site</button>
+  
+  <div class="info">
+    <p>FormAgent automatically fills forms using your locally stored data.</p>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
