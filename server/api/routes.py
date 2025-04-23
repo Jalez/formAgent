@@ -6,6 +6,7 @@ separating route definitions from the main server logic.
 """
 
 import logging
+import os
 from flask import Blueprint, request, jsonify
 
 from services.data_service import DataService
@@ -90,6 +91,72 @@ def interpret_form():
     except Exception as e:
         logger.error(f"Error interpreting form: {str(e)}")
         return jsonify({"error": "Failed to interpret form"}), 500
+
+@api_bp.route('/interpret/rag', methods=['POST'])
+def interpret_form_with_rag():
+    """Use RAG-enhanced AI to interpret form structure with improved accuracy."""
+    try:
+        form_data = request.get_json()
+        
+        # Validate form data
+        if not form_data or not isinstance(form_data, dict):
+            return jsonify({"error": "Invalid form data"}), 400
+        
+        # Check if RAG is enabled
+        if not form_interpreter.rag_enabled:
+            return jsonify({
+                "error": "RAG is not enabled. Set up vector database first or check API key.",
+                "fallback_available": True
+            }), 400
+        
+        # Use RAG-enhanced form interpretation
+        interpretation = form_interpreter.enhance_with_ai(form_data)
+        
+        return jsonify(interpretation)
+    except Exception as e:
+        logger.error(f"Error interpreting form with RAG: {str(e)}")
+        return jsonify({"error": "Failed to interpret form with RAG"}), 500
+
+@api_bp.route('/rag/status', methods=['GET'])
+def get_rag_status():
+    """Check if RAG is enabled and get vector database info."""
+    try:
+        status = {
+            "rag_enabled": form_interpreter.rag_enabled,
+            "vector_db_path": form_interpreter.db_path if hasattr(form_interpreter, "db_path") else None,
+            "vector_db_exists": os.path.exists(form_interpreter.db_path) if hasattr(form_interpreter, "db_path") else False
+        }
+        return jsonify(status)
+    except Exception as e:
+        logger.error(f"Error checking RAG status: {str(e)}")
+        return jsonify({"error": "Failed to check RAG status"}), 500
+
+@api_bp.route('/rag/ingest', methods=['POST'])
+def ingest_documents():
+    """Ingest documents into the RAG vector database."""
+    try:
+        data = request.get_json()
+        
+        if not data or not isinstance(data, dict):
+            return jsonify({"error": "Invalid data format"}), 400
+        
+        docs_dir = data.get('documents_directory')
+        
+        if not docs_dir or not os.path.isdir(docs_dir):
+            return jsonify({"error": "Invalid or missing documents directory"}), 400
+        
+        success = form_interpreter.ingest_documents(docs_dir)
+        
+        if success:
+            return jsonify({
+                "status": "success", 
+                "message": "Documents successfully ingested into vector store"
+            })
+        else:
+            return jsonify({"error": "Failed to ingest documents"}), 500
+    except Exception as e:
+        logger.error(f"Error ingesting documents: {str(e)}")
+        return jsonify({"error": f"Failed to ingest documents: {str(e)}"}), 500
 
 @api_bp.route('/mappings', methods=['GET'])
 def get_form_mappings():
